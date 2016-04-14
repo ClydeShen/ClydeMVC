@@ -1,8 +1,8 @@
 <?php
-define('URL', 'http://localhost/ClydeMVC/');
-define('DB_TYPE', 'mysql');
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'testdb');
-define('DB_USER', 'root');
+define('Project', 'ClydeMVC');
+define('DB_TYPE', '');
+define('DB_HOST', '');
+define('DB_NAME', '');
+define('DB_USER', '');
 define('DB_PASS', '');
 date_default_timezone_set('Pacific/Auckland');

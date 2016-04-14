@@ -1,6 +1,6 @@
 <?php
 
-class Bootstrap {
+class Starter {
 
     private $_url = null;
     private $_controller = null;
@@ -66,7 +66,7 @@ class Bootstrap {
     private function _getUrl() {
         $url = isset($_GET['url']) ? $_GET['url'] : null;
         $url = rtrim($url, '/');
-        $url = filter_var($url, FILTER_SANITIZE_URL);   
+        $url = filter_var($url, FILTER_SANITIZE_URL);
         $this->_url = explode('/', $url);
     }
 
@@ -157,4 +157,48 @@ class Bootstrap {
         exit;
     }
 
+}
+
+class Url {
+
+    /**
+     * 
+     * @param String $actionName is method name in controller
+     * @param String $controllerName is controller name
+     */
+    public static function Action($actionName, $controllerName) {
+        $domain = $_SERVER['SERVER_NAME'];
+        if ($domain == "localhost") {
+            $domain = $domain . '/' . Project;
+        }
+        if ($actionName == "index") {
+            echo '//' . $domain . '/' . $controllerName;
+        } else {
+            echo '//' . $domain . '/' . $controllerName . '/' . $actionName;
+        }
+    }
+
+    public static function _CSS($cssName) {
+        $domain = $_SERVER['SERVER_NAME'];
+        if ($domain == "localhost") {
+            $domain = $domain . '/' . Project;
+        }
+        return '//' . $domain . '/css/' . $cssName;
+    }
+
+    public static function _JS($jsName) {
+        $domain = $_SERVER['SERVER_NAME'];
+        if ($domain == "localhost") {
+            $domain = $domain . '/' . Project;
+        }
+        return '//' . $domain . '/js/' . $jsName;
+    }
+
+    public static function _File($file, $folder) {
+        $domain = $_SERVER['SERVER_NAME'];
+        if ($domain == "localhost") {
+            $domain = $domain . '/' . Project;
+        }
+        return '//' . $domain . '/' . $folder . '/' . $file;
+    }
 }
